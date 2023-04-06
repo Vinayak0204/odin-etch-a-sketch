@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap@100;400;800&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+
+    <title>Etch a Sketch</title>
+
+    <style>
+    html {
+        font-family: 'Permanent Marker',cursive;
+        background-image: url("background.jpg");
+        width: 100%;
+      }
+    .bodydiv {
+        display: block;
+        align-content: center;
+        }
+    body {
+        width: 50%;
+        max-width: 800px;
+        min-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    h1 {
+        display:block;
+        background-color: rgba(255,255,255,0.4);
+        align-items:center ;
+        text-align: center;
+      }
+    .main {
+        font-size: 1px;
+        width: 600em;
+        height: 600em;
+        display: block;
+        flex-flow:wrap;
+        background-color: white;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .VarArea {
+        margin-top: 2em;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 20px;
+        background-color: rgba(255,255,255,0.4);
+        }
+    .forliningup {
+        display:flex;
+        justify-content: space-around;
+        padding: 3px;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 8px;
+        background-color: #0cf;
+        width: 130px;
+        height: 38px;
+        white-space: normal;
+
+    
+
+    }
+    .gridsize {
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        height: 50px;
+        justify-content: space-around;
+        }
+ 
+    input[type=submit]{ 
+        font-family:'Permanent Marker',cursive;
+        background: none;
+	    color: inherit;
+        border: none;
+        width: inherit;
+        white-space: inherit;
+    } 
+    input[type=submit]:focus{ 
+        font-family:'Permanent Marker',cursive;
+        color: blue;
+        border: none;
+    }
+    input[type=color]{
+        width: 130px;
+        margin-bottom: 7px;
+    }
+
+    </style>
+    </head>
+
+    <body onload="createSubdiv()">
+       <h1><text>Etch a Sketch</text></h1>
+       
+       <div class="bodydiv">
+        <div class = "main" ></div>
+            <div class = "VarArea">
+                <div class ="gridsize">
+                    <span class = "currgrid">Enter Grid Size</span>
+                    <input type="range" step="1" min="2" max="99" id="guessField" class="gridSize" oninput="showcurrVal()"></input>
+                    <div class ="forliningup"><input type="submit" value = "Change Grid Size" class = "createSubdivs"></div>
+                </div> 
+                <div class ="forliningup"><input type="submit" value = "Rainbow Color" class = "rainbowcolo"></div>
+                <div class ="forliningup"><input type="submit" value = "Greyscale" class = "greyscale"></div>
+                <div class = "gridsize">
+                    <input type="color" class="colorpicker1" value="#000000" width="30px">
+                    <div class = "forliningup" ><input type="submit" value = "Choose a color" class = "colorselect" ></div>
+                </div>
+            </div>
+        </div>
+    <script>
+        var mainDiv = document.querySelector('.main');
+        var subDivfrag = document.createDocumentFragment();
+        var createSubdivs = document.querySelector('.createSubdivs');
+        var currgrid = document.querySelector('.currgrid');
+        var gridSizeTB = document.querySelector('.gridSize');
+        gridSizeTB.value = 20;
+        var VarArea = document.querySelector('.VarArea');
+        var rainbowcolo = document.querySelector('.rainbowcolo');
+        var colorpicker = document.querySelector('.colorpicker1');
+        var colorselec = document.querySelector('.colorselect');
+        var colors = ["#ff0000","#ffa500","#ffff00","#008000","#0000ff","#4b0082","#ee82ee","#FF7F00","#00FF00","#9400D3","#00CC99","#FF3399","#66FFCC"];
+        var greyscale = document.querySelector('.greyscale');
+        let opacitylevel;
+        rainbowcolo.addEventListener('click',rainbowcolor);
+        function rainbowcolor(){
+            const reddy = document.querySelectorAll('.red');
+            reddy.forEach(element => element.addEventListener('mouseover',() =>{
+            rand = Math.floor(Math.random()*colors.length);
+            mycolor = colors[rand];
+            element.style.backgroundColor = mycolor;
+            element.style.borderColor= mycolor;
+        }))}
+        colorpicker.addEventListener('onchange',promptuser());
+        function promptuser(){
+            colorselec.value = "Click to change color!";
+        }
+        gridSizeTB.addEventListener('onchange',showVal());
+        function showcurrVal(){
+          console.log("currval"+gridSizeTB.value);
+          createSubdivs.value = "Change Grid Size to " + gridSizeTB.value + "x" + gridSizeTB.value;
+        }
+        function showVal(){
+            console.log("change"+gridSizeTB.value);
+            currgrid.innerHTML = "Current Grid Size " +  gridSizeTB.value+ "x"+  gridSizeTB.value;
+            createSubdivs.value = "Choose Grid Size and reset Grid";
+        }
+        colorselec.addEventListener('click',colorselect);
+        function colorselect(){
+            const reddy = document.querySelectorAll('.red');
+            reddy.forEach(element => element.addEventListener('mouseover',() =>{
+            element.style.backgroundColor = colorpicker.value;
+            element.style.borderColor= colorpicker.value;
+        }))}
+        createSubdivs.addEventListener('click', createSubdiv);
+        function createSubdiv(){
+            while (mainDiv.hasChildNodes()){
+                mainDiv.removeChild(mainDiv.firstChild);
+                }
+                for (let i = 1;i<=gridSizeTB.value**2;i++){
+                    var div = document.createElement('div');
+                    var heightm = (600/gridSizeTB.value)-2;
+                    var widthm = (600/gridSizeTB.value)-2;
+                    div.style.height = heightm +"em";
+                    div.style.width = heightm + "em";
+                    div.style.border= "solid 1em white";
+                    div.style.display="inline-block";
+                    subDivfrag.appendChild(div);
+                }
+            mainDiv.appendChild(subDivfrag);
+            colorboxes();
+            colorselect();
+          }
+        function colorboxes(){
+        const collection = mainDiv.children;
+        for (let i = 0; i < collection.length; i++) {
+            collection[i].setAttribute ("class","red");
+            collection[i].setAttribute("aria-valuenow","1");
+        }
+        }
+        greyscale.addEventListener('click',testhover);
+        function testhover(){
+          const reddy = document.querySelectorAll('.red');
+          reddy.forEach(element => element.addEventListener('mouseover',() =>{
+            element.ariaValueNow=(parseInt(element.ariaValueNow))+1;
+            element.style.borderColor = "rgba(0,0,0,0.1)";
+            element.style.backgroundColor="rgba(0,0,0,0.1)"
+            if(opacitylevel>1){
+                element.style.border = "solid 1em rgba(0,0,0,1)";
+                element.style.backgroundColor = "rgba(0,0,0,1)";    
+            }
+            else{
+                let opacitylevel = (parseFloat(element.ariaValueNow)/10).toPrecision(2);
+                element.style.border = "solid 1em rgba(0,0,0,"+opacitylevel+")";
+                element.style.backgroundColor = "rgba(0,0,0,"+opacitylevel+")";
+            }
+            }
+            )
+            )
+        }
+        
+    </script>
