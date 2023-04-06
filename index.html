@@ -7,34 +7,29 @@
     <title>Etch a Sketch</title>
 
     <style>
-
-      :root{
-        --currcolor: mycolor ;
-      }
-      html {
+    html {
         font-family: 'Permanent Marker',cursive;
         background-image: url("background.jpg");
         width: 100%;
       }
-      .bodydiv {
+    .bodydiv {
         display: block;
         align-content: center;
-      }
-      body {
+        }
+    body {
         width: 50%;
         max-width: 800px;
         min-width: 480px;
         margin-left: auto;
         margin-right: auto;
       }
-      h1 {
+    h1 {
         display:block;
         background-color: rgba(255,255,255,0.4);
         align-items:center ;
         text-align: center;
       }
-
-      .main {
+    .main {
         font-size: 1px;
         width: 600em;
         height: 600em;
@@ -44,160 +39,78 @@
         justify-content: center;
         margin-left: auto;
         margin-right: auto;
+    }
+    .VarArea {
+        margin-top: 2em;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 20px;
+        background-color: rgba(255,255,255,0.4);
+        }
+    .forliningup {
+        display:flex;
+        justify-content: space-around;
+        padding: 3px;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 8px;
+        background-color: #0cf;
+        width: 130px;
+        height: 38px;
+        white-space: normal;
 
-      }
-      
+    
 
-
-.rainbow {
-
-background-color: var(--currcolor);
-
-}
-.opacity1 {
-  background-color:rgba(0,0,0,0.1);
-  border-color:rgba(0,0,0,0.1);
-}
-.opacity2 {
-  background-color:rgba(0,0,0,0.2);
-  border-color:rgba(0,0,0,0.2);
-}
-.opacity3 {
-  background-color:rgba(0,0,0,0.3);
-  border-color: rgba(0,0,0,0.3);
-}
-.opacity4 {
-  background-color:rgba(0,0,0,0.4);
-  border-color: rgba(0,0,0,0.4);
-}
-.opacity5 {
-  background-color:rgba(0,0,0,0.5);
-  border-color: rgba(0,0,0,0.5);
-}
-.opacity6 {
-  background-color:rgba(0,0,0,0.6);
-  border-color: rgba(0,0,0,0.6);
-}
-.opacity7 {
-  background-color:rgba(0,0,0,0.7);
-  border-color: rgba(0,0,0,0.7);
-}
-.opacity8 {
-  background-color:rgba(0,0,0,0.8);
-  border-color: rgba(0,0,0,0.8);
-}
-.opacity9 {
-  background-color:rgba(0,0,0,0.9);
-  border-color: rgba(0,0,0,0.9);
-}
-.opacity10 {
-  background-color:rgba(0,0,0,1);
-  border-color: rgba(0,0,0,1);
-}
-.VarArea {
-  margin-top: 2em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background-color: rgba(255,255,255,0.4);
-
-
-}
-
-.gridsize {
-  display: flex;
-  flex-direction: column;
-  align-items:center;
-
-}
-
-input[type=submit]
-{ 
-  font-family:'Permanent Marker',cursive;
-  padding: 10px;
-  border-radius: 10px;
-  
-} 
-input[type=submit]:focus
-{ 
-  font-family:'Permanent Marker',cursive;
-  color: blue;
-  
-}
-input[type=submit].colorselect{
-  background: none;
-	color: inherit;
-	border: none;
-  padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
-}
-.bodydiv {
-align-items: center;
-justify-content: center;
-
-}
-
-
-/* CSS */
-.button-52 {
-  font-size: 16px;
-  font-weight: 200;
-  letter-spacing: 1px;
-  padding: 13px 20px 13px;
-  outline: 0;
-  border: 1px solid black;
-  cursor: pointer;
-  position: relative;
-  background-color: rgba(0, 0, 0, 0);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.button-52:after {
-  content: "";
-  background-color: #ffe54c;
-  width: 100%;
-  z-index: -1;
-  position: absolute;
-  height: 100%;
-  top: 7px;
-  left: 7px;
-  transition: 0.2s;
-}
-
-.button-52:hover:after {
-  top: 0px;
-  left: 0px;
-}
-
-@media (min-width: 768px) {
-  .button-52 {
-    padding: 13px 50px 13px;
-  }
-}
+    }
+    .gridsize {
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        height: 50px;
+        justify-content: space-around;
+        }
+ 
+    input[type=submit]{ 
+        font-family:'Permanent Marker',cursive;
+        background: none;
+	    color: inherit;
+        border: none;
+        width: inherit;
+        white-space: inherit;
+    } 
+    input[type=submit]:focus{ 
+        font-family:'Permanent Marker',cursive;
+        color: blue;
+        border: none;
+    }
+    input[type=color]{
+        width: 130px;
+        margin-bottom: 7px;
+    }
 
     </style>
-  </head>
+    </head>
 
-  <body onload="createSubdiv()">
-    <h1><text>Etch a Sketch</text></h1>
-    <div class="bodydiv">
-    
-
-    <div class = "main" ></div>
-  <div class = "VarArea">
-    <div class ="gridsize"><span class = "currgrid">Enter Grid Size</span><input type="range" step="1" min="2" max="99" id="guessField" class="gridSize" oninput="showcurrVal()" ></input><input type="submit" value = "Change Gride Size" class = "createSubdivs"></div>
-    
-    <input type="submit" value = "Rainbow Color" class = "rainbowcolo">
-    <input type="submit" value = "Greyscale" class = "greyscale">
-    <Div class = "choosecolor"><input type="submit" value = "Choose a color" class = "colorselect" >
-    <input type="color" class="colorpicker" value="#000000"></Div>
-  </div>
-  </div>
+    <body onload="createSubdiv()">
+       <h1><text>Etch a Sketch</text></h1>
+       
+       <div class="bodydiv">
+        <div class = "main" ></div>
+            <div class = "VarArea">
+                <div class ="gridsize">
+                    <span class = "currgrid">Enter Grid Size</span>
+                    <input type="range" step="1" min="2" max="99" id="guessField" class="gridSize" oninput="showcurrVal()"></input>
+                    <div class ="forliningup"><input type="submit" value = "Change Grid Size" class = "createSubdivs"></div>
+                </div> 
+                <div class ="forliningup"><input type="submit" value = "Rainbow Color" class = "rainbowcolo"></div>
+                <div class ="forliningup"><input type="submit" value = "Greyscale" class = "greyscale"></div>
+                <div class = "gridsize">
+                    <input type="color" class="colorpicker1" value="#000000" width="30px">
+                    <div class = "forliningup" ><input type="submit" value = "Choose a color" class = "colorselect" ></div>
+                </div>
+            </div>
+        </div>
     <script>
         var mainDiv = document.querySelector('.main');
         var subDivfrag = document.createDocumentFragment();
@@ -207,226 +120,86 @@ justify-content: center;
         gridSizeTB.value = 20;
         var VarArea = document.querySelector('.VarArea');
         var rainbowcolo = document.querySelector('.rainbowcolo');
-        var colorpicker = document.querySelector('.colorpicker');
+        var colorpicker = document.querySelector('.colorpicker1');
         var colorselec = document.querySelector('.colorselect');
-        var colors = ["#ff0000","#ffa500","#ffff00","#008000","#0000ff","#4b0082","#ee82ee","#FF7F00","#00FF00","#9400D3","#00CC99","	#FF3399","#66FFCC"];
-        var rand = Math.floor(Math.random()*colors.length);
-        var mycolor = colors[rand];
-        //gridSizeTB.focus();
-        var colorname = 'rainbow';
-        let useclassname;
-        let newclassname;
+        var colors = ["#ff0000","#ffa500","#ffff00","#008000","#0000ff","#4b0082","#ee82ee","#FF7F00","#00FF00","#9400D3","#00CC99","#FF3399","#66FFCC"];
         var greyscale = document.querySelector('.greyscale');
-        //var bw = true;
-        var color = "rgb(0,0,0)";
-        let b;
-        var opaque = 0.1;
-        var alphac=0.1;
-
-      rainbowcolo.addEventListener('click',rainbowcolor);
-      function rainbowcolor(){
-        const reddy = document.querySelectorAll('.red');
-        alert("Hallo re hallo!");
-        alert(reddy.length);
-
-        reddy.forEach(element => element.addEventListener('mouseover',() =>{
-        rand = Math.floor(Math.random()*colors.length);
-        mycolor = colors[rand];
-        element.style.backgroundColor = mycolor;
-        element.style.borderColor= mycolor;
+        let opacitylevel;
+        rainbowcolo.addEventListener('click',rainbowcolor);
+        function rainbowcolor(){
+            const reddy = document.querySelectorAll('.red');
+            reddy.forEach(element => element.addEventListener('mouseover',() =>{
+            rand = Math.floor(Math.random()*colors.length);
+            mycolor = colors[rand];
+            element.style.backgroundColor = mycolor;
+            element.style.borderColor= mycolor;
         }))}
-
-      //gridSizeTB.addEventListener('oninput',showcurrVal());
-      gridSizeTB.addEventListener('onchange',showVal());
+        colorpicker.addEventListener('onchange',promptuser());
+        function promptuser(){
+            colorselec.value = "Click to change color!";
+        }
+        gridSizeTB.addEventListener('onchange',showVal());
         function showcurrVal(){
-          //var x = ;
           console.log("currval"+gridSizeTB.value);
           createSubdivs.value = "Change Grid Size to " + gridSizeTB.value + "x" + gridSizeTB.value;
-
         }
         function showVal(){
-      
-
-        console.log("change"+gridSizeTB.value);
-        currgrid.innerHTML = "Current Grid Size " +  gridSizeTB.value+ "x"+  gridSizeTB.value;
-        createSubdivs.value = "Choose Grid Size and reset Grid";
-      }
-      colorselec.addEventListener('click',colorselect);
-      function colorselect(){
-        //showVal();
-        const reddy = document.querySelectorAll('.red');
-        //alert("Hi!");
-        //alert(reddy.length);
-
-        reddy.forEach(element => element.addEventListener('mouseover',() =>{
-        element.style.backgroundColor = colorpicker.value;
-        element.style.borderColor= colorpicker.value;
+            console.log("change"+gridSizeTB.value);
+            currgrid.innerHTML = "Current Grid Size " +  gridSizeTB.value+ "x"+  gridSizeTB.value;
+            createSubdivs.value = "Choose Grid Size and reset Grid";
+        }
+        colorselec.addEventListener('click',colorselect);
+        function colorselect(){
+            const reddy = document.querySelectorAll('.red');
+            reddy.forEach(element => element.addEventListener('mouseover',() =>{
+            element.style.backgroundColor = colorpicker.value;
+            element.style.borderColor= colorpicker.value;
         }))}
-        
-
         createSubdivs.addEventListener('click', createSubdiv);
         function createSubdiv(){
-                while (mainDiv.hasChildNodes()){
-                  mainDiv.removeChild(mainDiv.firstChild);
+            while (mainDiv.hasChildNodes()){
+                mainDiv.removeChild(mainDiv.firstChild);
                 }
                 for (let i = 1;i<=gridSizeTB.value**2;i++){
-                var div = document.createElement('div');
-                var heightm = (600/gridSizeTB.value)-2;
-                var widthm = (600/gridSizeTB.value)-2;
-                //div.style.fontSize = "1px";
-                div.style.height = heightm +"em";
-                div.style.width = heightm + "em";
-                div.style.border= "solid 1em white";
-                div.style.display="inline-block";
-
-                subDivfrag.appendChild(div);
-                
-            }
+                    var div = document.createElement('div');
+                    var heightm = (600/gridSizeTB.value)-2;
+                    var widthm = (600/gridSizeTB.value)-2;
+                    div.style.height = heightm +"em";
+                    div.style.width = heightm + "em";
+                    div.style.border= "solid 1em white";
+                    div.style.display="inline-block";
+                    subDivfrag.appendChild(div);
+                }
             mainDiv.appendChild(subDivfrag);
             colorboxes();
             colorselect();
-            //testhover();
-
           }
-          //var a = color.slice(4).split(',');
-  //var newRBGA = 'rgba('+a[0]+','+parseInt(a[1])+','+parseInt(a[2])+','+opaque+')';
-          //rainbowcolor.addEventListener ('click',colorboxes);
-          function colorboxes(){
-            //alert("Hi!");
-
-            const collection = mainDiv.children;
-            //alert(collection.length);
-            for (let i = 0; i < collection.length; i++) {
-  collection[i].setAttribute ("class","red");
-  collection[i].setAttribute("aria-valuenow","1");
-  
-//  collection[i].setAttribute ("id","subdiv"+i);
-
-  //alert (collection[i].style.backgroundColor);
-
-
-}
-//const reddy = document.getElementsByClassName("red");
-
-  //alert(reddy.length);
-  //collection[i].setAttribute("style","background-color:"+newRBGA);
-
-
-
-          }
-        const reddy = document.querySelectorAll('.red');
+        function colorboxes(){
+        const collection = mainDiv.children;
+        for (let i = 0; i < collection.length; i++) {
+            collection[i].setAttribute ("class","red");
+            collection[i].setAttribute("aria-valuenow","1");
+        }
+        }
         greyscale.addEventListener('click',testhover);
         function testhover(){
           const reddy = document.querySelectorAll('.red');
-          reddy.forEach(element => element.removeEventListener('mouseover',colorboxes,false));
-
-
-          //const classToAdd = 'permred'
-          //alert(colorpicker.value);
-          //alert(reddy.length);
-          //alert(mycolor);
-          //alert(mycolor);
-          //var countpass = 0;
-
-        
           reddy.forEach(element => element.addEventListener('mouseover',() =>{
-            elemclasslist = element.classList;
-            console.log("THIS IS THE TEXT"+element.ariaValueNow);
             element.ariaValueNow=(parseInt(element.ariaValueNow))+1;
             element.style.borderColor = "rgba(0,0,0,0.1)";
             element.style.backgroundColor="rgba(0,0,0,0.1)"
-            //elemopacity = element.style.opacity
-            //var alphac = window.getComputedStyle(element).getPropertyValue("opacity");
-
-            console.log("current opacity"+alphac);
-            console.log("old class list"+element.classList)
-            element.classList.add("opacity1")
-            //element.style.border = "solid 1em rgba(0,0,0,0.1)";
-            console.log("contains or not"+!(elemclasslist.contains("opacity10")));
-            if(b>1){
-            element.style.border = "solid 1em rgba(0,0,0,1)";
-            element.style.backgroundColor = "rgba(0,0,0,1)";
-            elemclasslist.add(newclassname);}
+            if(opacitylevel>1){
+                element.style.border = "solid 1em rgba(0,0,0,1)";
+                element.style.backgroundColor = "rgba(0,0,0,1)";    
+            }
             else{
-            
-            let b = (parseFloat(element.ariaValueNow)/10).toPrecision(2);
-            //console.log("VALUE OF B"+b);
-            //let a = elemclasslist.item(elemclasslist.length-1).substring(7,8);
-            //let classnum = parseInt(a)+1;
-            //let newclassname = "opacity"+classnum;
-            element.style.border = "solid 1em rgba(0,0,0,"+b+")";
-            element.style.backgroundColor = "rgba(0,0,0,"+b+")";
-            //console.log("old opacity"+elemopacity);
-
-
+                let opacitylevel = (parseFloat(element.ariaValueNow)/10).toPrecision(2);
+                element.style.border = "solid 1em rgba(0,0,0,"+opacitylevel+")";
+                element.style.backgroundColor = "rgba(0,0,0,"+opacitylevel+")";
             }
-      
-            
-            /*/if (elemclasslist=="red") {
-            //element.style.backrgoundColor="rgba(0,0,0,0.4)";
-            //element.style.border="solid 5em rgba(0,0,0,0.4);"}
-            //element.classList.add("opacity1");
-            //console.log(typeof(element.classList))
-            //if ((element.classList.contains("opacity10")=== false ))
-             //{
-              //let a = elemclasslist.item(elemclasslist.length-1).substring(7,8);
-              //let classnum = parseInt(a)+1;
-              //let newclassname = "opacity"+classnum;
-              //element.style.backrgoundColor = "rgba(0,0,0,"+alphac+")";
-              //element.style.border="solid 1em rgba(0,0,0,"+alphac+")";
-              //elemclasslist.remove(elemclasslist.item(1));
-              //elemclasslist.add(newclassname);
-              //console.log(element.style.backrgoundColor);
-              //console.log(element.style.border);
-              //alphac=alphac+0.1;
-              
-      //        }*/
-            
-             console.log("ALLCLASSES"+elemclasslist);
-              console.log("CLASS Number "+newclassname);
-            
-            /*/console.log("CLASSES "+element.classList);
-            //console.log("CURR COLOR"+ element.style.backgroundColor);
-            //thisColor = element.style.backgroundColor;
-            //var compare = (thisColor.substring(thisColor.lastIndexOf(',')+1,thisColor.lastIndexOf(')')));
-            //console.log("COMPARE "+typeof(compare));
-            //if(compare < 1){
-              //compare = parseInt(compare) + 0.1;
-              //console.log("NEWCOMPARE"+ compare);
-              newRBGA = newRBGA.substring(0,newRBGA.lastIndexOf(','))+','+compare+')';
-              console.log("NEWRGBA"+ newRBGA);
-            }*/
-            dividnum = element.id.slice(6);
-
-            
-          }))
+            }
+            )
+            )
         }
-          /* if (opaque < 1.2) {
-              opaque = opaque+0.1;
-            if (bw === true){
-              var a = element.style.backgroundColor.slice(4).split(',');
-            if (element.style.backgroundColor.includes("rgba")==false){
-              var newRBGA = 'rgba('+a[0]+','+parseInt(a[1])+','+parseInt(a[2])+','+opaque+')';}
-              else {
-              var newRBGA = color.substring(0,color.lastIndexOf(','))+','+opaque+')';
-              }
-            
-            color = newRBGA;
-            
-              
-            }
-            }
-            else {element.style.backgroundColor = mycolor;}
-
-
-
-            element.style.borderColor= colorpicker.value;
-          }));*/
-
-          
-
-    
-                
+        
     </script>
-  </body>
-</html>
